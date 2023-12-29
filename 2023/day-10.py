@@ -1,4 +1,4 @@
-with open("2023-day-10-input.txt", "r") as f:
+with open("2023/Inputs/2023-day-10-input.txt", "r") as f:
     lines = f.readlines()
 #print(lines)
 for y,l in enumerate(lines):
@@ -103,12 +103,15 @@ ans = []
 for p in zmap:
     i = 0
     edges = 0
-    print('looking at',p)
+    print('looking at',p,ans)
     while True:
         pl = (p[0]-i,p[1])
         pr = (p[0]+i,p[1])
         print(pl, edges)
-        if pl[0] == 0 or pl[0] == len(lines[0])-2:
+        if (pl[0] == 0) or (pl[0] == len(lines[0])-2) :
+            break
+        elif pr[0] == len(lines[0])-1:
+            edges = 0
             break
         elif pl in path:
             edges += 1
@@ -128,4 +131,3 @@ for p in zmap:
     print(ans)
 print(ans,len(ans))
 print(zmap)
-print
